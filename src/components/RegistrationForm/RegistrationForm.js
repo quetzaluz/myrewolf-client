@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Input, Required } from '../Utils/Utils'
+import ApiService from '../../services/api-service'
 
 export default class RegistrationForm extends Component {
     static defaultProps = {
@@ -12,15 +13,25 @@ export default class RegistrationForm extends Component {
         ev.preventDefault()
         const { full_name, nick_name, user_name, password } = ev.target
 
-        console.log('registration form submittee')
-        console.log({ full_name, nick_name, user_name, password })
-
-        full_name.value = ''
-        nick_name.value = ''
-        user_name.value = ''
-        password.value = ''
-        this.props.onRegistrationSuccess()
+        this.setState({ error: null })
+        ApiService.postUser({
+            user_name: user_name.value,
+            password: password.value,
+            full_name: full_name.value,
+            nick_name: nick_name.value,
+        })
+            .then(user => {
+                full_name.value = ''
+                nick_name.value = ''
+                user_name.value = ''
+                password.value = ''
+                this.props.onRegistrationSuccess()
+            })
+            .catch(res => {
+                this.setState({ error: res.error })
+            })
     }
+
 
     render() {
         const { error } = this.state

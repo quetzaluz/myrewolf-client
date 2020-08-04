@@ -3,7 +3,7 @@ import TokenService from '../../services/token-service';
 import { Button, Input } from '../Utils/Utils';
 
 
-export default class LoginForm extends Component {
+export default class Login extends Component {
     static defaultProps = {
         onLoginSuccess: () => { },
     };
@@ -34,7 +34,7 @@ export default class LoginForm extends Component {
                 </div>
                 <div className="password">
                     <label htmlFor="LoginForm_password">Password</label>
-                    <Input required name="password" type="password" id="LoginForm_passwordd"></Input>
+                    <Input required name="password" type="password" id="LoginForm_password"></Input>
                 </div>
                 <Button type="submit">Login</Button>
             </form>

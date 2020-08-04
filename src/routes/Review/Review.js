@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import ApiService from '../../services/api-service';
-import { Button, Textarea } from '../Utils/Utils';
+import { Button, Textarea } from '../../components/Utils/Utils';
 import './Review.css'
 
 export default class Review extends Component {
-
 
     handleSubmit = ev => {
         ev.preventDefault()
@@ -48,10 +47,7 @@ export default class Review extends Component {
                         <option value='5'>5 Stars</option>
                     </select>
                 </div>
-
                 <Button type='submit'>Review Rewolf!</Button>
-
-
             </form>
 
         )

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 const DiscoveryContext = React.createContext({
     questions: [],
+    answers: [],
     error: null,
     setError: () => { },
     clearError: () => { },
@@ -15,8 +16,11 @@ export class DiscoveryProvider extends Component {
         questions: [],
         error: null,
     };
-    setList = questions => {
+    setQuestions = questions => {
         this.setState({ questions })
+    }
+    setAnswers = answers => {
+        this.setState({ answers })
     }
 
     setError = error => {
@@ -30,10 +34,11 @@ export class DiscoveryProvider extends Component {
     render() {
         const value = {
             questions: this.state.questions,
+            answers: this.state.answers,
             error: this.state.error,
             setError: this.setError,
             clearError: this.clearError,
-            setList: this.setList,
+            setQuestions: this.setQuestions,
         }
         return (
             <DiscoveryContext.Provider value={value}>

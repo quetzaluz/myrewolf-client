@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import TokenService from '../../services/token-service';
 import './Header.css';
-
+import RewolfLogo from '../../images/RewolfLogo.jpg'
 export default class Header extends Component {
     handleLogoutClick = () => {
         TokenService.clearAuthToken();
@@ -32,7 +32,7 @@ export default class Header extends Component {
                 <nav className="Nav">
                     <h1>
                         <Link to='/home'>
-                            My Rewolf
+                            Logo
                         </Link>
                     </h1>
                     <span className="Header_tagline-wide">Actualize your potential</span>

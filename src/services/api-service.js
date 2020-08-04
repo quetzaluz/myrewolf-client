@@ -8,9 +8,9 @@ const ApiService = {
 
         }).then((res) =>
             !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
-        );
+        )
     },
-    getQuestions(questionId) {
+    getQuestion(questionId) {
         return fetch(`${config.API_ENDPOINT}/discovery/${questionId}`, {
             headers: {
                 authorization: `basic ${TokenService.getAuthToken()}`,
@@ -19,7 +19,7 @@ const ApiService = {
             !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
         );
     },
-    postAnswer(id, answers) {
+    postAnswer(questionId, answer) {
         return fetch(`${config.API_ENDPOINT}/discovery`, {
             method: 'POST',
             headers: {
@@ -27,14 +27,15 @@ const ApiService = {
                 authorization: `basic ${TokenService.getAuthToken()}`,
             },
             body: JSON.stringify({
-                id: id,
-                answers,
+                question_id: questionId,
+                answer,
             }),
         }).then((res) =>
             !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
         );
     },
     postReview(text, rating) {
+        console.log(`basic ${TokenService.getAuthToken()}`)
         return fetch(`${config.API_ENDPOINT}/reviews`, {
             method: 'POST',
             headers: {
@@ -48,6 +49,20 @@ const ApiService = {
         }).then((res) =>
             !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
         );
+    },
+    postUser(user) {
+        return fetch(`${config.API_ENDPOINT}/users`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(user),
+        })
+            .then(res =>
+                (!res.ok)
+                    ? res.json().then(e => Promise.reject(e))
+                    : res.json()
+            )
     },
 };
 

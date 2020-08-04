@@ -8,8 +8,12 @@ export default class HomePage extends Component {
         return (
             <div className="Home_page">
                 <main className="main">
-                    <Link to='/discovery'>Discovery</Link>
-                    <Link to='/review'>Review</Link>
+                    <div className="Home_page-discovery">
+                        <Link to='/discovery'>Discovery</Link>
+                    </div>
+                    <div className="Home_page-review">
+                        <Link to='/reviews'>Review</Link>
+                    </div>
                 </main>
             </div>
         )
