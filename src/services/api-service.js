@@ -13,7 +13,7 @@ const ApiService = {
     getQuestion(questionId) {
         return fetch(`${config.API_ENDPOINT}/discovery/${questionId}`, {
             headers: {
-                authorization: `basic ${TokenService.getAuthToken()}`,
+                "Authorization": `basic ${TokenService.getAuthToken()}`,
             }
         }).then((res) =>
             !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
@@ -23,8 +23,8 @@ const ApiService = {
         return fetch(`${config.API_ENDPOINT}/discovery`, {
             method: 'POST',
             headers: {
-                'content-type': 'application/json',
-                authorization: `basic ${TokenService.getAuthToken()}`,
+                "content-type": "application/json",
+                "Authorization": `basic ${TokenService.getAuthToken()}`,
             },
             body: JSON.stringify({
                 question_id: questionId,
