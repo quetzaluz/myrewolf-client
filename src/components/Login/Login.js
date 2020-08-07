@@ -2,13 +2,30 @@ import React, { Component } from 'react';
 import TokenService from '../../services/token-service';
 import { Button, Input } from '../Utils/Utils';
 import '../../routes/Login/LoginPage.css'
+import LoginContext from '../../contexts/LoginContext'
 
 export default class Login extends Component {
+    static contextType = LoginContext
+
     static defaultProps = {
         onLoginSuccess: () => { },
+        handleLoginState: () => { },
+    }
+
+    state = {
+        error: null,
+        loading: false,
     };
 
-    state = { error: null };
+    handleSubmit = (ev) => {
+        this.setState(
+            {
+                error: null,
+                loading: true,
+            },
+            this.handleSubmitBasicAuth(ev)
+        );
+    };
 
     handleSubmitBasicAuth = (ev) => {
         ev.preventDefault();
@@ -17,15 +34,16 @@ export default class Login extends Component {
         TokenService.saveAuthToken(
             TokenService.makeBasicAuthToken(user_name.value, password.value)
         )
-
         user_name.value = '';
         password.value = '';
         this.props.onLoginSuccess();
+        this.context.handleLoginState(true);
     }
+
     render() {
         const { error } = this.state;
         return (
-            <form className="LoginForm" onSubmit={this.handleSubmitBasicAuth}>
+            <form className="LoginForm" onSubmit={this.handleSubmit}>
                 <div role="alert">{error && <p className="red">{error}</p>}</div>
                 <div className="user_name">
                     <label htmlFor="LoginForm_user_name">User Name</label>
@@ -35,8 +53,11 @@ export default class Login extends Component {
                     <label htmlFor="LoginForm_password">Password</label>
                     <Input required name="password" type="password" id="LoginForm_password"></Input>
                 </div>
-                <Button type="submit">Log in</Button>
+                <Button id='submit-btn' type="submit">Log in</Button>
             </form>
+
+
+
         )
     }
 }

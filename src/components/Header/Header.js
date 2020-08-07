@@ -2,22 +2,25 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import TokenService from '../../services/token-service';
 import './Header.css';
+import LoginContext from '../../contexts/LoginContext'
+
 
 export default class Header extends Component {
-    state = {
-        loggedIn: false
+    static contextType = LoginContext
+
+    static defaultProps = {
+        loggedIn: false,
+        error: null,
+        registered: false,
+        handleLoginState: () => { }
     }
 
-
-    handleLogoutClick = () => {
+    handleLogoutClick = (ev) => {
         TokenService.clearAuthToken();
+        this.context.handleLoginState(false)
     };
 
-    handleLoginClick = () => {
-        this.setState({ loggedIn: true })
-    };
-
-    renderLogoutLink() {
+    renderLogoutLink = () => {
 
         return (
             <div className="Header_logged-in">
@@ -26,11 +29,11 @@ export default class Header extends Component {
         );
     }
 
-    renderLoginLink() {
+    renderLoginLink = () => {
 
         return (
             <div className="Header_not-logged-in">
-                <Link onClick={this.handleLoginClick} to="/">Log in</Link>
+                <Link to="/">Log in</Link>
                 <Link to="/register">Register</Link>
             </div>
         )

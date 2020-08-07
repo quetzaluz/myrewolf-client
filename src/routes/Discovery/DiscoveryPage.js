@@ -62,7 +62,7 @@ export default class DiscoveryPage extends Component {
                     {error
                         ? <p className='red'>There was an error, try again</p>
                         : this.renderQuestions()}
-                    <Button type='submit'>Submit</Button>
+                    <Button id='submit-btn' type='submit'>Submit</Button>
                 </form>
             </Section>
         )

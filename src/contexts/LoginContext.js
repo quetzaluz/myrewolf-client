@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import TokenService from '../services/token-service';
 
-export const LoginContext = React.createContext({
-    nickname: "",
+const LoginContext = React.createContext({
     loggedIn: false,
     error: null,
     registered: false,
@@ -44,9 +43,9 @@ export class LoginProvider extends Component {
             saveNickname: this.saveNickname,
         };
         return (
-            <LoginContext.Providder value={value}>
+            <LoginContext.Provider value={value}>
                 {this.props.children}
-            </LoginContext.Providder>
+            </LoginContext.Provider>
         );
     }
 }

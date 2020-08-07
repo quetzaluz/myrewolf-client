@@ -26,6 +26,7 @@ export default class LoginPage extends Component {
                 </div>
                 <Login
                     onLoginSuccess={this.handleLoginSuccess} />
+                <p>This project was made for a creative agency to help them gather information on how they can better help serve their customers' needs. Once you create a free account and log in you will have access to a discovery form and a review page.</p>
             </Section>
         )
     }

@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import { DiscoveryProvider } from '../src/contexts/DiscoveryContext'
 import App from './components/App/App';
 import { BrowserRouter } from "react-router-dom";
-
+import { LoginProvider } from '../src/contexts/LoginContext'
 
 ReactDOM.render(
   <BrowserRouter>
     <DiscoveryProvider>
-      <App />
+      <LoginProvider>
+        <App />
+      </LoginProvider>
     </DiscoveryProvider>
   </BrowserRouter>
   ,
