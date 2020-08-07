@@ -22,7 +22,7 @@ export default class LoginPage extends Component {
         return (
             <Section className='LoginPage'>
                 <div className='LoginHeader'>
-                    <h2>Login</h2>
+                    <h2>Log in</h2>
                 </div>
                 <Login
                     onLoginSuccess={this.handleLoginSuccess} />

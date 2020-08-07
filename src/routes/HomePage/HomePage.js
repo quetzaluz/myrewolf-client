@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-// import Discovery from '../Discovery/Discovery'
-// import Review from '../Review/Review'
 import { Link } from 'react-router-dom'
+import './HomePage.css'
 
 export default class HomePage extends Component {
     render() {
@@ -9,10 +8,12 @@ export default class HomePage extends Component {
             <div className="Home_page">
                 <main className="main">
                     <div className="Home_page-discovery">
-                        <Link to='/discovery'>Discovery</Link>
+                        <Link to='/discovery'>Help us help you!</Link>
+                    </div>
+                    <div className="Space">
                     </div>
                     <div className="Home_page-review">
-                        <Link to='/reviews'>Review</Link>
+                        <Link to='/reviews'>Review Rewolf</Link>
                     </div>
                 </main>
             </div>

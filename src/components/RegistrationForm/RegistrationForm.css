@@ -1,0 +1,21 @@
+.full_name {
+    text-align: center;
+    margin: auto;
+}
+.nick_name{
+    text-align: center;
+    margin: auto;
+}
+.RegistrationForm {
+    text-align: center;
+    justify-content: center;
+}
+input {
+    display: inline-block;
+    margin: 20px;
+    position: relative;
+}
+#RegistrationForm_user_name, #RegistrationForm_password, #RegistrationForm_full_name, #RegistrationForm_nick_name {
+    width: 70%;
+    margin: auto;
+}

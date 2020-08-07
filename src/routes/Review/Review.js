@@ -5,6 +5,19 @@ import './Review.css'
 
 export default class Review extends Component {
 
+    static defaultProps = {
+        location: {},
+        history: {
+            push: () => { },
+        },
+    }
+
+    renderHomePage = () => {
+        const { location, history } = this.props
+        const destination = (location.state || {}).from || '/home'
+        history.push(destination)
+    }
+
     handleSubmit = ev => {
         ev.preventDefault()
         const { text, rating } = ev.target
@@ -12,6 +25,9 @@ export default class Review extends Component {
         ApiService.postReview(text.value, Number(rating.value))
             .then(() => {
                 text.value = ''
+            })
+            .then(() => {
+                this.renderHomePage()
             })
             .catch(this.context.setError)
     }
@@ -34,20 +50,22 @@ export default class Review extends Component {
                 </div>
 
                 <div className="select">
-                    <label htmlFor='rating' >Rate our services!</label>
+                    <label htmlFor='rating'>Rate our services</label>
                     <select
                         required
                         aria-label='Rate our services!'
                         name='rating'
                         id='rating'>
-                        <option value='1'>1 Star</option>
-                        <option value='2'>2 Stars</option>
-                        <option value='3'>3 Stars</option>
-                        <option value='4'>4 Stars</option>
                         <option value='5'>5 Stars</option>
+                        <option value='4'>4 Stars</option>
+                        <option value='3'>3 Stars</option>
+                        <option value='2'>2 Stars</option>
+                        <option value='1'>1 Star</option>
                     </select>
                 </div>
-                <Button type='submit'>Review Rewolf!</Button>
+                <div className="Submit-btn">
+                    <Button type='submit'>Review Rewolf!</Button>
+                </div>
             </form>
 
         )

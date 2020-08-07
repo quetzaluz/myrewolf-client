@@ -1,21 +1,23 @@
 body {
-  background-color: #f3eee8;
+  background-color: white;
   font-family: 'futura' , sans-serif;
+  color: white;
 }
 
 .App {
     padding-top: 20px;
     padding-bottom: 20px;
-    max-width: 960px;
+    max-width: 100%;
     margin: 0 auto;
   }
   
   .App_header {
     padding-left: 20px;
     padding-right: 20px;
+    justify-content: space-evenly;
+    text-align: center;
   }
   
   .App_main {
     margin-top: 40px;
   }
-  

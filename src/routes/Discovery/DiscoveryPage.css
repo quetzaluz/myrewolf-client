@@ -3,4 +3,9 @@
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    color: black;
+}
+.DiscoverySubmit {
+    text-align: center;
+    justify-content: center;
 }

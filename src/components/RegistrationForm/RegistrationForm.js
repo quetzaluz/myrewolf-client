@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { Button, Input, Required } from '../Utils/Utils'
 import ApiService from '../../services/api-service'
-
+import './RegistrationForm.css'
 export default class RegistrationForm extends Component {
     static defaultProps = {
-        onRegistrationSuccess: () => { }
+        onRegistrationSuccess: () => {
+
+        }
     }
 
     state = { error: null }
@@ -26,6 +28,7 @@ export default class RegistrationForm extends Component {
                 user_name.value = ''
                 password.value = ''
                 this.props.onRegistrationSuccess()
+
             })
             .catch(res => {
                 this.setState({ error: res.error })
@@ -82,7 +85,6 @@ export default class RegistrationForm extends Component {
                     <Input
                         name='nick_name'
                         type='text'
-                        required
                         id='RegistrationForm_nick_name'>
                     </Input>
                 </div>

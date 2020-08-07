@@ -8,28 +8,40 @@ import DiscoveryQuestion from '../../components/Discovery/DiscoveryQuestions'
 export default class DiscoveryPage extends Component {
     static contextType = DiscoveryContext
 
+    static defaultProps = {
+        location: {},
+        history: {
+            push: () => { },
+        },
+    }
 
     componentDidMount() {
         this.context.clearError()
         ApiService.getQuestions()
             .then(this.context.setQuestions)
             .catch(this.context.setError)
+    }
 
+    renderHomePage = () => {
+        const { location, history } = this.props
+        const destination = (location.state || {}).from || '/home'
+        history.push(destination)
     }
 
     handleSubmit = ev => {
         ev.preventDefault()
-        const { questions } = this.context
-        const { answer } = ev.target
-        console.log(answer)
+        const { answers } = ev.target
 
-        ApiService.postAnswer(questions.id, answer.value)
+        ApiService.postAnswer(answers.value)
             .then(this.context.setAnswers)
             .then(() => {
-                answer.value = ''
+                answers.value = ''
+            })
+            .then(() => {
+                this.renderHomePage()
+
             })
             .catch(this.context.setError)
-
     }
 
     renderQuestions() {
@@ -39,7 +51,6 @@ export default class DiscoveryPage extends Component {
                 key={question.id}
                 question={question}
             />
-
         )
     }
 

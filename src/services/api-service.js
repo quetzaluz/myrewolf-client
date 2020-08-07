@@ -19,32 +19,31 @@ const ApiService = {
             !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
         );
     },
-    postAnswer(questionId, answer) {
-        return fetch(`${config.API_ENDPOINT}/discovery`, {
+    postAnswer(answer) {
+        return fetch(`${config.API_ENDPOINT}/discovery/${answer}`, {
             method: 'POST',
             headers: {
                 "content-type": "application/json",
-                "Authorization": `basic ${TokenService.getAuthToken()}`,
+                authorization: `basic ${TokenService.getAuthToken()}`,
             },
             body: JSON.stringify({
-                question_id: questionId,
-                answer,
+                answer
             }),
         }).then((res) =>
             !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
         );
     },
-    postReview(text, rating) {
+    postReview( text, rating) {
         console.log(`basic ${TokenService.getAuthToken()}`)
         return fetch(`${config.API_ENDPOINT}/reviews`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
-                authorization: `basic ${TokenService.getAuthToken()}`,
+                authorization: `Basic ZHVuZGVyOnBhcGVy`,
             },
-            body: JSON.stringify({
+            body: JSON.stringify({ 
                 text,
-                rating,
+                rating
             }),
         }).then((res) =>
             !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
@@ -64,6 +63,32 @@ const ApiService = {
                     : res.json()
             )
     },
+    deleteQuestion(question, id) {
+        return fetch(`${config.API_ENDPOINT}/discovery/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json',
+                'authorization' : `Basic ${TokenService.getAuthToken()}`
+            },
+            body: JSON.stringify(question)
+        })
+            .then((res) =>
+                !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+            );
+    },
+    updateQuestion(question, id) {
+        return fetch(`${config.API_ENDPOINT}/discovery/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `Basic ${TokenService.getAuthToken()}`
+            },
+            body: JSON.stringify(question)
+        })
+            .then((res) =>
+                !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+            );
+    }
 };
 
 export default ApiService;

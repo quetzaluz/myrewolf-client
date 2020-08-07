@@ -27,6 +27,10 @@ export class DiscoveryProvider extends Component {
         console.error(error)
         this.setState({ error })
     }
+    removeQuestion = (id) => {
+        const newQuestions = this.state.questions.filter((q) => q.id !== id);
+        this.setState({ questions: newQuestions });
+    };
 
     clearError = () => {
         this.setState({ error: null })

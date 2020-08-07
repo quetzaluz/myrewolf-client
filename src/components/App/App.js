@@ -5,12 +5,11 @@ import DiscoveryPage from '../../routes/Discovery/DiscoveryPage'
 import Footer from '../Footer/Footer'
 import Review from '../../routes/Review/Review'
 import HomePage from '../../routes/HomePage/HomePage';
-// import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage'
 import LoginPage from '../../routes/Login/LoginPage'
 import PublicOnlyRoute from '../Utils/PublicOnlyRoute';
 import PrivateRoute from '../Utils/PrivateRoute'
-import RegistrationForm from '../RegistrationForm/RegistrationForm';
 import './App.css'
+import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage';
 
 export default class App extends Component {
   state = { hasError: false };
@@ -32,11 +31,10 @@ export default class App extends Component {
           )}
           <Switch>
             <PublicOnlyRoute exact path={'/'} component={LoginPage} />
-            <PublicOnlyRoute path={'/register'} component={RegistrationForm} />
+            <PublicOnlyRoute path={'/register'} component={RegistrationPage} />
             <PrivateRoute path={'/home'} component={HomePage} />
             <PrivateRoute path={'/discovery'} component={DiscoveryPage} />
             <PrivateRoute path={'/reviews'} component={Review} />
-            {/* <Route component={NotFoundPage} /> */}
           </Switch>
         </main>
         <Footer />

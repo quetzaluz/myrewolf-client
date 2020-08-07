@@ -1,25 +1,56 @@
-
 .LoginPage{
     width: 100%;
     height: 100%;
-    
+    text-align: center;
+    justify-content: center;
 }
-
-
 
 html,
 body {
     width: 100%;
     height: 100%;
-    
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    
+}
+
+h2 {
+    text-align: center;
 }
 
 .LoginHeader {
     text-align: left;
-    
+    color: black;
+}
 
+input {
+    display: inline-block;
+    margin: 20px;
+    position: relative;
+}
+#LoginForm_user_name {
+    width: auto;
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+    
+}
+
+#LoginForm_password {
+    width: auto;
+    margin:auto;
+}
+
+.password {
+text-align: center;
+margin: auto;
+}
+
+.user_name {
+   text-align: center; 
+}
+
+.LoginForm {
+    text-align: center;
+    justify-content: center;
 }

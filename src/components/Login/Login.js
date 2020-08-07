@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TokenService from '../../services/token-service';
 import { Button, Input } from '../Utils/Utils';
-
+import '../../routes/Login/LoginPage.css'
 
 export default class Login extends Component {
     static defaultProps = {
@@ -30,13 +30,12 @@ export default class Login extends Component {
                 <div className="user_name">
                     <label htmlFor="LoginForm_user_name">User Name</label>
                     <Input required name="user_name" id="LoginForm_user_name"></Input>
-
                 </div>
                 <div className="password">
                     <label htmlFor="LoginForm_password">Password</label>
                     <Input required name="password" type="password" id="LoginForm_password"></Input>
                 </div>
-                <Button type="submit">Login</Button>
+                <Button type="submit">Log in</Button>
             </form>
         )
     }
