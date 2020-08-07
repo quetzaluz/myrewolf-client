@@ -1,3 +1,20 @@
+APP NAME: MY REWOLF
+
+API DOCUMENTATION:
+POST-/discovery/${answer}
+GET- /discovery
+
+POST- /reviews
+
+SUMMARY: 
+This app allows clients of Rewolf to answer survey questions and leave reviews so Rewolf can better serve their needs.
+
+This was built using React on the front end and PostgreSQL on the backend.
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
