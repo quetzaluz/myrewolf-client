@@ -4,11 +4,21 @@ import TokenService from '../../services/token-service';
 import './Header.css';
 
 export default class Header extends Component {
+    state = {
+        loggedIn: false
+    }
+
+
     handleLogoutClick = () => {
         TokenService.clearAuthToken();
     };
 
+    handleLoginClick = () => {
+        this.setState({ loggedIn: true })
+    };
+
     renderLogoutLink() {
+
         return (
             <div className="Header_logged-in">
                 <Link onClick={this.handleLogoutClick} to="/">Log out</Link>
@@ -20,11 +30,12 @@ export default class Header extends Component {
 
         return (
             <div className="Header_not-logged-in">
-                <Link to="/">Log in</Link>
+                <Link onClick={this.handleLoginClick} to="/">Log in</Link>
                 <Link to="/register">Register</Link>
             </div>
         )
     }
+
     render() {
 
         return (
@@ -32,7 +43,7 @@ export default class Header extends Component {
                 <nav className='Nav'>
                     <div className="Header">
                         <h1>
-                            <Link to='/home'>
+                            <Link to='/'>
                                 My Rewolf
                         </Link>
                         </h1>
@@ -42,7 +53,7 @@ export default class Header extends Component {
                             : this.renderLoginLink()}
                     </div>
                 </nav>
-                <span className="Header_tagline-narrow">Actualize your potential</span>
+
             </>
         )
     }

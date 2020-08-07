@@ -33,15 +33,14 @@ const ApiService = {
             !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
         );
     },
-    postReview( text, rating) {
-        console.log(`basic ${TokenService.getAuthToken()}`)
+    postReview(text, rating) {
         return fetch(`${config.API_ENDPOINT}/reviews`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
-                authorization: `Basic ZHVuZGVyOnBhcGVy`,
+                authorization: `basic ${TokenService.getAuthToken()}`,
             },
-            body: JSON.stringify({ 
+            body: JSON.stringify({
                 text,
                 rating
             }),
@@ -68,7 +67,7 @@ const ApiService = {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
-                'authorization' : `Basic ${TokenService.getAuthToken()}`
+                'authorization': `Basic ${TokenService.getAuthToken()}`
             },
             body: JSON.stringify(question)
         })

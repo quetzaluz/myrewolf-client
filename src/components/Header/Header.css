@@ -25,6 +25,8 @@
 .Header a{
     color: white;
     text-decoration: none;
+    
+  
 }
 
 .Header_tagline-wide {
@@ -43,7 +45,6 @@
   
 .Header_not-logged-in {
     display: flex;
-    align-items: center;
     justify-content: flex;
     margin: auto;
   }
