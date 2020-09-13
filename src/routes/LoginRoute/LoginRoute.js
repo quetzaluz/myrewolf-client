@@ -1,32 +1,37 @@
-import React, { Component } from "react";
-import LoginForm from "../../components/LoginForm/LoginForm";
+import React, { Component } from 'react';
+import LoginForm from '../../components/LoginForm/LoginForm';
+import './LoginRoute.css';
 
 class LoginRoute extends Component {
-  static defaultProps = {
-    location: {},
-    history: {
-      push: () => {},
-    },
-  };
+	static defaultProps = {
+		location: {},
+		history: {
+			push: () => {},
+		},
+	};
 
-  handleLoginSuccess = () => {
-    const { location, history } = this.props;
-    const destination = (location.state || {}).from || "/";
-    history.push(destination);
-  };
+	handleLoginSuccess = () => {
+		const { location, history } = this.props;
+		const destination = (location.state || {}).from || '/';
+		history.push(destination);
+	};
 
-  render() {
-    return (
-      <section>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-        <h2>Login</h2>
-        <LoginForm onLoginSuccess={this.handleLoginSuccess} />
-      </section>
-    );
-  }
+	render() {
+		return (
+			<section className="LoginPage">
+				<div className="LoginHeader">
+					<h2>Log in</h2>
+				</div>
+				<LoginForm onLoginSuccess={this.handleLoginSuccess} />
+				<p>
+					This project was made for a creative agency to help them gather
+					information on how they can better serve their customers' needs. Once
+					you create a free account you will be able to answer their
+					questionnaire and then leave a review.
+				</p>
+			</section>
+		);
+	}
 }
 
 export default LoginRoute;

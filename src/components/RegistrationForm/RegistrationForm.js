@@ -1,95 +1,96 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Input, Required, Label } from "../Form/Form";
-import GeneratorApiService from "../../services/generator-api-service";
-import Button from "../Button/Button";
-import "../App/App.css";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { Input, Required, Label } from '../Form/Form';
+import GeneratorApiService from '../../services/generator-api-service';
+import Button from '../Button/Button';
+import './RegistrationForm.css';
 
 class RegistrationForm extends Component {
-  static defaultProps = {
-    onRegistrationSuccess: () => {},
-  };
+	static defaultProps = {
+		onRegistrationSuccess: () => {},
+	};
 
-  state = { error: null };
+	state = { error: null };
 
-  firstInput = React.createRef();
+	firstInput = React.createRef();
 
-  handleSubmit = (ev) => {
-    ev.preventDefault();
-    const { name, email, password } = ev.target;
-    GeneratorApiService.postUser({
-      name: name.value,
-      email: email.value,
-      password: password.value,
-    })
-      .then((user) => {
-        name.value = "";
-        email.value = "";
-        password.value = "";
-        this.props.onRegistrationSuccess();
-      })
-      .catch((res) => {
-        this.setState({ error: res.error });
-      });
-  };
+	handleSubmit = (ev) => {
+		ev.preventDefault();
+		const { full_name, nick_name, user_name, password } = ev.target;
 
-  componentDidMount() {
-    this.firstInput.current.focus();
-  }
+		GeneratorApiService.postUser({
+			full_name: full_name.value,
+			nick_name: nick_name.value,
+			password: password.value,
+			user_name: user_name.value,
+		})
+			.then((user) => {
+				full_name.value = '';
+				nick_name.value = '';
+				password.value = '';
+				user_name.value = '';
+				this.props.onRegistrationSuccess();
+			})
+			.catch((res) => {
+				this.setState({ error: res.error });
+			});
+	};
 
-  render() {
-    const { error } = this.state;
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <div role="alert">{error && <p>{error}</p>}</div>
-        <div>
-          <Label
-            htmlFor="registration-name-input"
-            value="Enter your name"
-            hidden
-          ></Label>
-          <Input
-            ref={this.firstInput}
-            id="registration-name-input"
-            name="name"
-            placeholder="name*"
-            required
-          />
-        </div>
-        <div>
-          <Label htmlFor="registration-email-input" hidden>
-            Enter your email
-            <Required />
-          </Label>
-          <Input
-            id="registration-email-input"
-            name="email"
-            placeholder="email*"
-            required
-          />
-        </div>
-        <div>
-          <Label htmlFor="registration-password-input" hidden>
-            Enter your Password
-            <Required />
-          </Label>
-          <Input
-            id="registration-password-input"
-            type="password"
-            name="password"
-            placeholder="password*"
-            required
-          />
-        </div>
-        <footer>
-          <Button type="submit">Sign up</Button>
-          <Link to="/login">
-            <Button type="button">Login</Button>
-          </Link>
-        </footer>
-      </form>
-    );
-  }
+	componentDidMount() {
+		this.firstInput.current.focus();
+	}
+
+	render() {
+		const { error } = this.state;
+		return (
+			<form className="RegistrationForm" onSubmit={this.handleSubmit}>
+				<div role="alert">{error && <p className="red">{error}</p>}</div>
+				<div className="full_name">
+					<label htmlFor="Registration_full_name">
+						Full name <Required />
+					</label>
+					<Input
+						ref={this.firstInput}
+						name="full_name"
+						type="text"
+						required
+						id="RegistrationForm_full_name"
+					></Input>
+				</div>
+				<div className="user_name">
+					<label htmlFor="RegistrationForm_user_name">
+						User name <Required />
+					</label>
+					<Input
+						name="user_name"
+						type="text"
+						required
+						id="RegistrationForm_user_name"
+					></Input>
+				</div>
+				<div className="password">
+					<label htmlFor="RegistrationForm_password">
+						Password <Required />
+					</label>
+					<Input
+						name="password"
+						type="password"
+						required
+						id="RegistrationForm_password"
+					></Input>
+				</div>
+				<div className="nick_name">
+					<label htmlFor="RegistrationForm_nick_name">Nickname</label>
+					<Input
+						name="nick_name"
+						type="text"
+						id="RegistrationForm_nick_name"
+					></Input>
+				</div>
+				<Button type="submit">Register</Button>
+			</form>
+		);
+	}
 }
 
 export default RegistrationForm;

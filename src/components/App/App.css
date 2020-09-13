@@ -1,6 +1,21 @@
-a {
-  text-decoration: none;
+body {
+	background-color: white;
+	font-family: 'futura', sans-serif;
+	color: black;
 }
+
 .App {
-  padding: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.App_header {
+	justify-content: space-evenly;
+	text-align: center;
+}
+
+.App_main {
+	margin-top: 40px;
 }
