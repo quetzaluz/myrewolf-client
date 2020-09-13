@@ -3,7 +3,7 @@ import config from '../config';
 
 const ApiService = {
     getQuestions() {
-        return fetch(`${config.API_ENDPOINT}/discovery`, {
+        return fetch(`${config.API_ENDPOINT}discovery`, {
             headers: {},
 
         }).then((res) =>
@@ -11,7 +11,7 @@ const ApiService = {
         )
     },
     getQuestion(questionId) {
-        return fetch(`${config.API_ENDPOINT}/discovery/${questionId}`, {
+        return fetch(`${config.API_ENDPOINT}discovery/${questionId}`, {
             headers: {
                 "Authorization": `basic ${TokenService.getAuthToken()}`,
             }
@@ -34,7 +34,7 @@ const ApiService = {
         );
     },
     postReview(text, rating) {
-        return fetch(`${config.API_ENDPOINT}/reviews`, {
+        return fetch(`${config.API_ENDPOINT}reviews`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -49,7 +49,7 @@ const ApiService = {
         );
     },
     postUser(user) {
-        return fetch(`${config.API_ENDPOINT}/users`, {
+        return fetch(`${config.API_ENDPOINT}api/user`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -63,7 +63,7 @@ const ApiService = {
             )
     },
     deleteQuestion(question, id) {
-        return fetch(`${config.API_ENDPOINT}/discovery/${id}`, {
+        return fetch(`${config.API_ENDPOINT}discovery/${id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
@@ -76,7 +76,7 @@ const ApiService = {
             );
     },
     updateQuestion(question, id) {
-        return fetch(`${config.API_ENDPOINT}/discovery/${id}`, {
+        return fetch(`${config.API_ENDPOINT}discovery/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
