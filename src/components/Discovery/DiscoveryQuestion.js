@@ -6,21 +6,21 @@ import ApiService from '../../services/generator-api-service';
 export default class DiscoveryQuestion extends Component {
 	static contextType = DiscoveryContext;
 
-	handleSubmit = (ev) => {
-		ev.preventDefault();
-		const { answer } = ev.target;
-		//const answer = [answers].value;
+	// handleSubmit = (ev) => {
+	// 	ev.preventDefault();
+	// 	const { answer } = ev.target;
+	// 	//const answer = [answers].value;
 
-		ApiService.postAnswer(answer)
-			.then(this.context.setAnswers)
-			.then(() => {
-				answer.value = '';
-			})
-			.then(() => {
-				this.renderHomePage();
-			})
-			.catch(this.context.setError);
-	};
+	// 	ApiService.postAnswer(answer)
+	// 		.then(this.context.setAnswers)
+	// 		.then(() => {
+	// 			answer.value = '';
+	// 		})
+	// 		.then(() => {
+	// 			this.renderHomePage();
+	// 		})
+	// 		.catch(this.context.setError);
+	// };
 	render() {
 		const { question } = this.props;
 		console.log(question);

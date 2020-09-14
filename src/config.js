@@ -1,4 +1,4 @@
 export default {
-	API_ENDPOINT: 'http://localhost:8000',
-	TOKEN_KEY: 'blogful-client-auth-token',
+	API_ENDPOINT: 'https://fast-woodland-30922.herokuapp.com',
+	TOKEN_KEY: process.env.TOKEN_KEY,
 };

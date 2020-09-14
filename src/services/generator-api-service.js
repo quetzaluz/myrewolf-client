@@ -67,7 +67,7 @@ const GeneratorApiService = {
 	},
 	postAnswer(answer) {
 		console.log(answer);
-		return fetch(`${config.API_ENDPOINT}/discovery/${answer}`, {
+		return fetch(`${config.API_ENDPOINT}/discovery`, {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json',

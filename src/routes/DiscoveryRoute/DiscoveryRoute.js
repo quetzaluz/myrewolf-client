@@ -30,14 +30,15 @@ export default class DiscoveryRoute extends Component {
 
 	handleSubmit = (ev) => {
 		ev.preventDefault();
-		const { answer } = ev.target;
+		const answer = document.getElementById('answers').value;
+		//const { answer } = ev.target;
 		//const answer = [answers].value;
 
-		ApiService.postAnswer({ answer: this.answers.value })
+		ApiService.postAnswer({ answer })
 			.then(this.context.setAnswers)
-			.then(() => {
-				answer.value = '';
-			})
+			// .then(() => {
+			// 	answer.value = '';
+			// })
 			.then(() => {
 				this.renderHomePage();
 			})
@@ -48,11 +49,7 @@ export default class DiscoveryRoute extends Component {
 		const { questions = [] } = this.context;
 		console.log(questions);
 		return questions.map((question) => (
-			<DiscoveryQuestion
-				key={question.id}
-				question={question}
-				handleSubmit={this.handleSubmit}
-			/>
+			<DiscoveryQuestion key={question.id} question={question} />
 		));
 	}
 
