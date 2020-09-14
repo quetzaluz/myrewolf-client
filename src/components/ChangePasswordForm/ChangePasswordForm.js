@@ -4,6 +4,7 @@ import GenerateApiService from '../../services/generator-api-service';
 import UserContext from '../../contexts/UserContext';
 import Button from '../Button/Button';
 import '../App/App.css';
+import './ChangePassword.css';
 
 class ChangePasswordForm extends Component {
 	static defaultProps = {
@@ -57,7 +58,9 @@ class ChangePasswordForm extends Component {
 						required
 					/>
 				</div>
-				<Button type="submit">Save Password</Button>
+				<Button id="submit-btn" type="submit">
+					Save Password
+				</Button>
 			</form>
 		);
 	}

@@ -14,6 +14,10 @@ export default class HomePage extends Component {
 					<div className="Home_page-review">
 						<Link to="/reviews">Review Rewolf</Link>
 					</div>
+					<div className="Space"></div>
+					<div className="Change">
+						<Link to="/change">Change your password</Link>
+					</div>
 				</main>
 			</div>
 		);

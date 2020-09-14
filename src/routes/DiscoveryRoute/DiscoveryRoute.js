@@ -33,7 +33,7 @@ export default class DiscoveryRoute extends Component {
 		const { answer } = ev.target;
 		//const answer = [answers].value;
 
-		ApiService.postAnswer(answer)
+		ApiService.postAnswer({ answer: this.answers.value })
 			.then(this.context.setAnswers)
 			.then(() => {
 				answer.value = '';
@@ -48,7 +48,11 @@ export default class DiscoveryRoute extends Component {
 		const { questions = [] } = this.context;
 		console.log(questions);
 		return questions.map((question) => (
-			<DiscoveryQuestion key={question.id} question={question} />
+			<DiscoveryQuestion
+				key={question.id}
+				question={question}
+				handleSubmit={this.handleSubmit}
+			/>
 		));
 	}
 

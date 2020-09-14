@@ -44,7 +44,7 @@ class Header extends Component {
 				<nav className="Nav">
 					<div className="Header">
 						<h1>
-							<Link to="/">My Rewolf</Link>
+							<Link to="/home">My Rewolf</Link>
 						</h1>
 						<span className="Header_tagline-wide">
 							Actualize your potential

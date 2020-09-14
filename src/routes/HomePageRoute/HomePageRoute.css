@@ -26,3 +26,9 @@ a {
 .Space {
 	padding: 15%;
 }
+.Change {
+	text-align: center;
+	background-color: #e0a877;
+	height: 75px;
+	padding: 10%;
+}

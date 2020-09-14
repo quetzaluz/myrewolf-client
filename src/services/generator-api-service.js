@@ -19,7 +19,7 @@ const GeneratorApiService = {
 		);
 	},
 	postUser(user) {
-		return fetch(`${config.API_ENDPOINT}/api/user`, {
+		return fetch(`${config.API_ENDPOINT}/user`, {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json',
@@ -31,7 +31,8 @@ const GeneratorApiService = {
 		);
 	},
 	updateUser(userId) {
-		return fetch(`${config.API_ENDPOINT}/api/user/${userId}`, {
+		console.log(userId);
+		return fetch(`${config.API_ENDPOINT}/auth/user/${userId}`, {
 			method: 'PATCH',
 			headers: {
 				'content-type': 'application/json',
