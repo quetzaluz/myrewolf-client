@@ -30,14 +30,14 @@ const GeneratorApiService = {
 			!res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
 		);
 	},
-	updateUser(userId) {
-		console.log(userId);
-		return fetch(`${config.API_ENDPOINT}/auth/user/${userId}`, {
+	updateUser(user_name, password) {
+		return fetch(`${config.API_ENDPOINT}/auth/user`, {
 			method: 'PATCH',
 			headers: {
 				'content-type': 'application/json',
 				Authorization: `Bearer ${TokenService.getAuthToken()}`,
 			},
+			body: JSON.stringify(user_name, password),
 		}).then((res) =>
 			!res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
 		);
