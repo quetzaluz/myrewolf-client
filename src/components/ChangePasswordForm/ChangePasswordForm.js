@@ -19,15 +19,17 @@ class ChangePasswordForm extends Component {
 
 	handleSubmit = (ev) => {
 		ev.preventDefault();
-		const user_name = ['user_name'].value; //maybe?
-		const password = ['password'].value;
-		console.log(user_name);
+		const user_name = document.getElementById('change-username-input').value;
+		const password = document.getElementById('change-password-input').value;
+		//const { user_name, password } = ev.target;
+		console.log(user_name, password);
+		const user = { user_name: user_name, password: password };
 
 		this.setState({ error: null });
 
 		GenerateApiService.updateUser({
-			user_name: user_name.value,
-			password: password.value,
+			user_name: user_name,
+			password: password,
 		})
 			.then((res) => {
 				user_name.value = '';
@@ -45,14 +47,14 @@ class ChangePasswordForm extends Component {
 	}
 
 	render() {
-		const { error } = this.state;
+		//const { error } = this.state;
 		return (
 			<form className="ChangePasswordForm" onSubmit={this.handleSubmit}>
-				<div role="alert">{error && <p>{error}</p>}</div>
+				{/* <div role="alert">{error && <p>{error}</p>}</div> */}
 				<div>
-					<Label htmlFor="change-username-input" hidden>
+					<label htmlFor="change-username-input" hidden>
 						User Name
-					</Label>
+					</label>
 					<Input
 						ref={this.firstInput}
 						id="change-username-input"
@@ -62,9 +64,9 @@ class ChangePasswordForm extends Component {
 						required
 					/>
 
-					<Label htmlFor="change-password-input" hidden>
+					<label htmlFor="change-password-input" hidden>
 						New Password
-					</Label>
+					</label>
 
 					<Input
 						id="change-password-input"
@@ -76,6 +78,10 @@ class ChangePasswordForm extends Component {
 				</div>
 				<Button id="submit-btn" type="submit">
 					Save Password
+				</Button>
+				<div className="space" />
+				<Button id="erase-me" type="submit">
+					Erase Me
 				</Button>
 			</form>
 		);
