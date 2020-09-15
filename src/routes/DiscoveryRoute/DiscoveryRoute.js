@@ -30,19 +30,21 @@ export default class DiscoveryRoute extends Component {
 
 	handleSubmit = (ev) => {
 		ev.preventDefault();
-		const answer = document.getElementById('answers').value;
-		//const { answer } = ev.target;
-		//const answer = [answers].value;
+		const { questions = [] } = this.context;
+		questions.forEach(question => {
+			const answer = document.getElementById(question.id).value;
 
-		ApiService.postAnswer({ answer })
-			.then(this.context.setAnswers)
-			// .then(() => {
-			// 	answer.value = '';
-			// })
-			.then(() => {
-				this.renderHomePage();
-			})
-			.catch(this.context.setError);
+
+			ApiService.postAnswer({ answer })
+				.then(this.context.setAnswers)
+				// .then(() => {
+				// 	answer.value = '';
+				// })
+				.then(() => {
+					this.renderHomePage();
+				})
+				.catch(this.context.setError);
+			});
 	};
 
 	renderQuestions() {

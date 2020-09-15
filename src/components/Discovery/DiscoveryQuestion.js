@@ -30,7 +30,7 @@ export default class DiscoveryQuestion extends Component {
 				<div className="DiscoveryQuestion__text">
 					<h4 className="DiscoveryQuestion__heading">{question.question}</h4>
 
-					<Input required name="answers" id="answers"></Input>
+					<Input required name={question.id} id={question.id}></Input>
 				</div>
 			</div>
 		);
